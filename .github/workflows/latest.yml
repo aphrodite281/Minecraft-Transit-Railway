@@ -21,7 +21,7 @@ jobs:
       - name: Make gradle wrapper executable
         run: chmod +x ./gradlew
       - name: Build ${{ matrix.minecraft }}
-        run: ./gradlew build -PbuildVersion="${{ matrix.minecraft }}" -PpatreonApiKey="${{ secrets.PATREON_API_KEY }}" --continue
+        run: ./gradlew build -PbuildVersion="${{ matrix.minecraft }}" --continue
       - name: Capture dev artifacts
         uses: actions/upload-artifact@main
         with:
