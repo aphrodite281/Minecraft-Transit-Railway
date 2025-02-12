@@ -22,11 +22,16 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build ${{ matrix.minecraft }}
         run: ./gradlew build -PbuildVersion="${{ matrix.minecraft }}" --continue
-      - name: Capture dev artifacts
+      - name: Latest
         uses: actions/upload-artifact@main
         with:
-          name: ${{ matrix.minecraft }}
+          name: ${{ matrix.minecraft }} latest-dev-shadow
           path: build/latest/*-dev-shadow.jar
+      - name: Common
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ matrix.minecraft }} common-dev
+          path: common/build/devlibs/*.jar
   upload-collectively:
     needs: build
     runs-on: ubuntu-latest
