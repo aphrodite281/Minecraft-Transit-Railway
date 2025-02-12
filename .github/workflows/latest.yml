@@ -27,22 +27,22 @@ jobs:
         with:
           name: ${{ matrix.minecraft }}
           path: build/latest/*-dev-shadow.jar
-    upload-collectively:
-      needs: build
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
-        - name: Download dev artifacts
-          uses: actions/download-artifact@v4
-          with:
-            path: artifacts
-            merge-multiple: true
-        - name: Display structure of downloaded files
-          run: ls -R artifacts
-        - name: Capture dev artifacts collectively
-          uses: actions/upload-artifact@v4
-          with:
-            name: Collective
-            path: artifacts/*.jar
-            compression-level: 9
+  upload-collectively:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Download dev artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Display structure of downloaded files
+        run: ls -R artifacts
+      - name: Capture dev artifacts collectively
+        uses: actions/upload-artifact@v4
+        with:
+          name: Collective
+          path: artifacts/*.jar
+          compression-level: 9
