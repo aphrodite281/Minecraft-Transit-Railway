@@ -1,4 +1,4 @@
-name: Latest
+name: Dev
 on: [ pull_request, push ]
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
       - name: Make gradle wrapper executable
         run: chmod +x ./gradlew
       - name: Build ${{ matrix.minecraft }}
-        run: ./gradlew build -PbuildVersion="${{ matrix.minecraft }}" --continue
+        run: ./gradlew build -PbuildVersion="${{ matrix.minecraft }}" --scan --continue
       - name: Latest
         uses: actions/upload-artifact@main
         with:
