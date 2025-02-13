@@ -1,5 +1,5 @@
 dependencies {
-	modImplementation "net.fabricmc:fabric-loader:+"
+	modImplementation "net.fabricmc:fabric-loader:0.15.3"
 	modApi "${rootProject.architectury_id}:architectury:${rootProject.architectury_data[0].split("\\+")[0]}"
 }
 
