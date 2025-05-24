@@ -32,6 +32,11 @@ jobs:
         with:
           name: ${{ matrix.minecraft }} common-dev
           path: common/build/devlibs/*.jar
+      - name: Release
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ matrix.minecraft }}
+          path: build/release/*.jar
   upload-collectively:
     needs: build
     runs-on: ubuntu-latest
